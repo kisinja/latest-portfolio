@@ -1,4 +1,3 @@
-import headerImg from "../assets/edited-1.png";
 import { Link } from "react-router-dom";
 import Skills from "../components/Skills";
 import RightArrow from "../components/RightArrow";
@@ -6,16 +5,15 @@ import Projects from "../components/Projects";
 
 const Home = () => {
   return (<>
-    <header className="px-[5%] py-4 sm:py-[50px] bg-black">
-      <div className="flex flex-col items-center sm:flex-row sm:justify-center gap-5 sm:items-center sm:gap-[100px]">
-        <div className="w-full sm:w-[600px] h-[400px] sm:h-[400px] relative" id="image-c">
-          <img src={headerImg} alt="Elvis Kiarie" className="w-full h-full object-cover rounded-lg sm:rounded-none absolute top-0" />
+    <header className="px-[5%] py-4 sm:py-[50px] bg-white">
+      <div className="flex flex-col sm:flex-row sm:justify-center items-center gap-5 sm:gap-[100px]">
+        <div className="w-full sm:w-[500px] h-[400px] sm:h-[400px] relative" id="image-c">
         </div>
 
         <div className="flex flex-col text-center sm:text-left gap-2 w-full sm:gap-4 sm:w-[500px]">
-          <h1 className="text-4xl font-bold text-white">I{"'"}m Elvis Kiarie</h1>
-          <p className="text-md tracking-wider text-gray-700 font-semibold">I{"'"}m an <span className="text-red-600">Engineer</span></p>
-          <p className="text-gray-300 text-lg tracking-wider leading-7">I{"'"}m Fullstack software engineer student at GomyCode Kenya, passionate about crafting innovative solutions. Proficient in front-end technologies like React and back-end frameworks like Express.js. Dedicated to continuous learning and eager to embark on professional endeavors. Excited to contribute to cutting-edge projects and make a meaningful impact in the tech industry.</p>
+          <h1 className="text-4xl font-bold text-gray-800">I{"'"}m Elvis Kiarie</h1>
+          <p className="text-md tracking-wider text-gray-500 font-semibold">I{"'"}m an <span className="text-red-600">Engineer</span></p>
+          <p className="text-gray-600 text-lg tracking-wider leading-7">I{"'"}m Fullstack software engineer student at GomyCode Kenya, passionate about crafting innovative solutions. Proficient in front-end technologies like React and back-end frameworks like Express.js. Dedicated to continuous learning and eager to embark on professional endeavors. Excited to contribute to cutting-edge projects and make a meaningful impact in the tech industry.</p>
           <div>
             <Link to="/">
               <button className="px-4 py-2 bg-red-600 text-white font-semibold rounded-xl mt-4 hover:bg-red-700 transition-all flex items-center gap-3 mx-auto">Hire Me <RightArrow /> </button>
