@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::moz-selection {
+  background-color: #a1a1a1;
+  color: red;
+}
+
+::selection {
+  background-color: #a1a1a1;
+  color: red;
+}
+
+#project {
+  transition: all .3s;
+}
+
+
+#project-details {
+  z-index: -1;
+  bottom: 0;
+  max-height: 0px;
+  transition: max-height, .6s, z-index, .4s;
+}
+
+#project:hover {
+  transform: translateY(-10px);
+}
+
+#project:hover #project-details {
+  z-index: 0;
+  padding: 10px;
+  max-height: 60px;
+}
+
+#project:hover #project-img {
+  background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7));
+}
+
+@media only screen and (max-width: 480px) {
+  #image-c {
+    width: 100%;
+  }
+
+  #image-c img {
+    width: 100%;
+  }
+}
