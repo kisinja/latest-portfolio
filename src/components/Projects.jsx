@@ -7,7 +7,7 @@ const Projects = () => {
         <div className="w-full flex flex-col gap-8 items-center sm:gap-5 sm:flex-row sm:justify-between mx-auto">
             {projectList.map((item) => (
                 <Link to={item.link} target='_blank' key={item.id}>
-                    <div className='w-full sm:w-[300px] h-[350px] sm:h-[300px] relative cursor-pointer' title='see project' id='project'>
+                    <div className='w-full sm:w-[380px] h-[350px] sm:h-[300px] relative cursor-pointer' title='see project' id='project'>
                         <div className='h-full w-full'>
                             <img src={item.img} className='h-full w-full object-cover rounded-lg' alt="project" id="project-img" />
                         </div>
