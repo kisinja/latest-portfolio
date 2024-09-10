@@ -111,15 +111,15 @@ const Contact = () => {
                         </center>
                         <form className="w-full flex flex-col gap-2 bg-white py-3 px-8 rounded-xl" onSubmit={handleSubmit}>
                             <div className="flex flex-col sm:flex-row gap-5">
-                                <input type="text" onChange={(e) => setSenderFullName(e.target.value)} className={`border p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderFullName") ? "border-2 border-red-500" : ""}`} placeholder="Full Name" />
-                                <input type="text" onChange={(e) => setSenderEmail(e.target.value)} className={`border p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderEmail") ? "border-2 border-red-500" : ""}`} placeholder="Email Address" />
+                                <input type="text" onChange={(e) => setSenderFullName(e.target.value)} className={`p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderFullName") ? "border-2 border-red-500" : ""}`} placeholder="Full Name" />
+                                <input type="text" onChange={(e) => setSenderEmail(e.target.value)} className={`p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderEmail") ? "border-2 border-red-500" : ""}`} placeholder="Email Address" />
                             </div>
                             <div className="flex flex-col sm:flex-row gap-5">
-                                <input type="text" onChange={(e) => setSenderPhoneNumber(e.target.value)} className={`border p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderPhoneNumber") ? "border-2 border-red-500" : ""}`} placeholder="Phone Number" />
-                                <input type="text" onChange={(e) => setSubject(e.target.value)} className={`border p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("subject") ? "border-2 border-red-500" : ""}`} placeholder="Subject" />
+                                <input type="text" onChange={(e) => setSenderPhoneNumber(e.target.value)} className={`p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("senderPhoneNumber") ? "border-2 border-red-500" : ""}`} placeholder="Phone Number" />
+                                <input type="text" onChange={(e) => setSubject(e.target.value)} className={`p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full sm:w-1/2 ${emptyFields.includes("subject") ? "border-2 border-red-500" : ""}`} placeholder="Subject" />
                             </div>
                             <div className="w-full">
-                                <textarea placeholder="Write a message" className={`border p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full ${emptyFields.includes("message") ? "border-2 border-red-500" : ""} h-[150px]`} cols="30" rows="10" onChange={(e) => setMessage(e.target.value)}></textarea>
+                                <textarea placeholder="Write a message" className={`p-3 text-black font-semibold rounded placeholder-gray-500 focus:outline-none w-full ${emptyFields.includes("message") ? "border-2 border-red-500" : ""} h-[150px]`} cols="30" rows="10" onChange={(e) => setMessage(e.target.value)}></textarea>
                             </div>
 
                             {msg && <div className="message">{msg}</div>}

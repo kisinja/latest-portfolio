@@ -64,6 +64,11 @@ body {
   /* Ensures the underline is visible */
 }
 
+input,
+textarea {
+  border: 1px solid #ccc;
+}
+
 #project {
   transition: all .3s;
 }
