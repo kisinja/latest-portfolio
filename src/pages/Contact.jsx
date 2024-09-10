@@ -52,6 +52,11 @@ const Contact = () => {
 
             setLoading(false);
             setEmptyFields([]);
+            setSenderFullName("");
+            setSenderEmail("");
+            setSenderPhoneNumber("");
+            setSubject("");
+            setMessage("");
         } catch (error) {
             console.log(error);
             setError(error.message);
