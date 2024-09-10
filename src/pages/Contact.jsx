@@ -15,7 +15,7 @@ const Contact = () => {
     const [msg, setMsg] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
 
-    const BASE_URL = "http://localhost:5555/api/messages/create";
+    const BASE_URL = "https://myhub-server.onrender.com/api/messages/create";
 
     const handleSubmit = async (e) => {
         e.preventDefault();
