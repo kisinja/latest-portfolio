@@ -1,8 +1,8 @@
 import tailwindImg from './tailwind-css-logo-vector.png';
 import mysqlImg from './mysql-logo.png';
 import sanityIo from './sanityio.png';
-import project1 from './project-1.png';
-import project2 from './project-2.png';
+import project1 from './Search.png';
+import project2 from './myDuka.png';
 import project3 from './project-3.png';
 
 export const frontEnd = [
@@ -117,23 +117,23 @@ export const otherSkills = [
 export const projectList = [
     {
         id: 1,
-        name: "Blog Website",
-        description: "A fullstack responsive Blogging website",
+        name: "TechPoster",
+        description: "A job portal website for tech jobs",
         img: project1,
-        link:'https://kelly-blog-new.vercel.app/'
+        link: 'https://techposter-frontend.onrender.com'
     },
     {
         id: 2,
-        name: "School Website",
-        description: "A fullstack responsive School website",
+        name: "MyDuka",
+        description: "A fullstack responsive E-commerce website for fashion",
         img: project2,
-        link:'https://kisinja-schools.vercel.app/'
+        link: 'https://myduka-client.onrender.com/'
     },
     {
         id: 3,
         name: "Lawyer's Website",
-        description: "A fullstack responsive Lawyer's website",
+        description: "A simple static responsive Lawyer's website",
         img: project3,
-        link:'https://munyiri-ltd.vercel.app/'
+        link: 'https://munyiri-ltd.vercel.app/'
     }
 ];
