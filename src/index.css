@@ -64,16 +64,6 @@ body {
   /* Ensures the underline is visible */
 }
 
-::moz-selection {
-  background-color: #a1a1a1;
-  color: red;
-}
-
-::selection {
-  background-color: #a1a1a1;
-  color: red;
-}
-
 #project {
   transition: all .3s;
 }
