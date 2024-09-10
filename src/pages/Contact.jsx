@@ -35,9 +35,15 @@ const Contact = () => {
             if (data.error) {
                 setError(data.error);
                 setMsg(null);
+                setLoading(false);
             } else {
                 setMsg(data.message);
                 setError(null);
+                setSenderFullName("");
+                setSenderEmail("");
+                setSenderPhoneNumber("");
+                setSubject("");
+                setMessage("");
             }
 
             if (data.emptyFields) {
