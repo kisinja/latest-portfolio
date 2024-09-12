@@ -4,7 +4,8 @@ import BlogCard from '../components/BlogCard';
 import Loader from '../components/Loader';
 
 const Blog = () => {
-  const BASE_URL = 'https://myhub-server.onrender.com/api';
+  /* const BASE_URL = 'https://myhub-server.onrender.com/api'; */
+  const BASE_URL = 'http://localhost:5555/api';
 
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ const Blog = () => {
         if (response.ok) {
           const data = await response.json();
           setBlogs(data);
+          console.log(blogs);
           setLoading(false);
         }
       } catch (error) {
