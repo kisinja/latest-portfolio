@@ -51,14 +51,14 @@ const Navbar = () => {
                             Projects
                         </NavLink>
                     </li>
-                    {/* <li>
+                    <li>
                         <NavLink
                             to="/blog"
-                            className={({ isActive }) => `font-normal hover:text-red-600 transition-all text-lg ${isActive ? 'text-red-600' : ''}`}
+                            className={({ isActive }) => `font-normal hover:text-red-600 transition-all text-lg ${isActive ? 'active' : ''}`}
                         >
-                            Blog
+                            Blogs
                         </NavLink>
-                    </li> */}
+                    </li>
                     <li>
                         <NavLink
                             to="/contact"

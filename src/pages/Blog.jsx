@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import BlogCard from '../components/BlogCard';
+import Loader from '../components/Loader';
 
 const Blog = () => {
 
-  const BASE_URL = 'http://localhost:5555/api';
+  const BASE_URL = 'https://myhub-server.onrender.com/api';
 
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getBlogs = async () => {
@@ -20,9 +23,11 @@ const Blog = () => {
           const data = await response.json();
           setBlogs(data);
           console.log(data);
+          setLoading(false);
         }
       } catch (error) {
         console.error(error.message);
+        setLoading(false);
       }
     }
 
@@ -45,13 +50,17 @@ const Blog = () => {
 
     <main className='bg-white'>
       <section className="px-[5%] py-[50px] flex flex-col gap-5 sm:flex-row sm:justify-between">
-        <div className='text-center sm:text-left flex flex-col gap-3'>
+        <div className='text-center sm:text-left flex flex-col gap-3 sm:w-1/2'>
           <h1 className="text-4xl text-gray-800 font-bold tracking-wider">Blog about <br /> everything</h1>
           <div>
-            <Link to="/publishBlog"><button className="bg-red-600 text-white font-semibold text-sm border-2 border-red-600 py-3 px-7 rounded-xl">Publish Blog</button></Link>
+            <Link to="/publishBlog">
+              <button className="bg-red-600 text-white font-semibold text-sm py-3 px-7 rounded-xl focus:ring-4 focus:ring-blue-500 focus:bg-white focus:text-black hover:bg-red-700">
+                Publish Blog
+              </button>
+            </Link>
           </div>
         </div>
-        <div className='w-full text-center sm:text-left sm:w-[500px]'>
+        <div className='w-1/2 text-center sm:text-left sm:w-[500px]'>
           <p className="text-gray-500 text-lg tracking-wider leading-7">Welcome to our diverse blog platform! Explore a rich array of content covering various topics from unique perspectives. Our community of contributors ensures a wide range of insights, experiences, and interests. Discover something new with every visit and join the conversation today!</p>
           <div className='mt-5'>
             <button className="bg-transparent text-black font-semibold text-sm border-2 border-red-600 py-3 px-7 rounded-xl">Read all Articles</button>
@@ -59,27 +68,15 @@ const Blog = () => {
         </div>
       </section>
 
-      <section className='px-[5%] bg-gray-200 py-[50px]'>
-        <div className='flex flex-col gap-5 sm:flex-row sm:justify-center sm:gap-[50px]'>
+      {loading && <Loader text="Fetching Blogs" />}
+
+      <section className='px-[5%] bg-gray-100 py-[50px]'>
+
+        <h1 className="text-4xl font-light text-center mb-6">Latest Blogs</h1>
+
+        <div className='flex flex-col gap-5 md:flex-row md:justify-center sm:gap-[50px]'>
           {blogs && blogs.map((blog) => (
-            <div className='w-full bg-white rounded-lg shadow sm:w-[500px]' key={blog.id}>
-              <div className='w-full bg-red-200 p-2 rounded-t-lg'>
-                <h1 className="text-gray-800 text-lg font-semibold">{blog.title}</h1>
-              </div>
-              {
-                blog.imgUrl && <img src={blog.imgUrl} alt={blog.title} className='w-full h-[200px] object-cover' />
-              }
-              <div className='p-2 w-full '>
-                <p className="text-gray-500 text-sm tracking-wider leading-7">{blog.content}</p>
-              </div>
-              <div className='p-2 w-full flex justify-between'>
-                <p className="text-xs text-gray-500 font-semibold tracking-wider"><i className="fa-solid fa-stopwatch text-gray-500 mr-2"></i>{blog.createdAt}</p>
-                <p className="text-xs text-gray-500 font-semibold tracking-wider cursor-pointer"><i className="fa-solid fa-user text-gray-500 mr-2"></i>{blog.author}</p>
-              </div>
-              <div className="text-center">
-                <button className="bg-red-500 py-2 px-5 text-white text-sm hover:bg-red-600 rounded-lg mb-2">Read More</button>
-              </div>
-            </div>
+            <BlogCard key={blog._id} blog={blog} />
           ))}
         </div>
       </section>
