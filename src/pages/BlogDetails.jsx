@@ -14,36 +14,33 @@ const BlogDetails = () => {
     const BASE_URL = `https://myhub-server.onrender.com/api`;
 
     useEffect(() => {
-        const getBlogById = async () => {
+        const fetchBlogAndRelated = async () => {
             try {
-                const res = await fetch(`BASE_URL/blogs/${id}`);
-
-                if (res.ok) {
-                    const data = await res.json();
-                    setBlog(data);
-                    setLoading(false);
-
-                    // fetching related blogs
-                    const relatedRes = await fetch(`BASE_URL/blogs/related?category=${data.category}`);
-                    if (relatedRes.ok) {
-                        const relatedData = await relatedRes.json();
-                        console.log(relatedData);
-                        setRelatedBlogs(relatedData.filter(b => b._id !== id)); // filtering out the current blog
-                    } else {
-                        setError("Blog not found");
-                        setLoading(false);
-                    }
-                } else {
-                    setError("Something went wrong! Please try again later");
-                    setLoading(false);
+                const blogRes = await fetch(`${BASE_URL}/blogs/${id}`);
+                if (!blogRes.ok) {
+                    throw new Error('Blog not found');
                 }
+
+                const blogData = await blogRes.json();
+                setBlog(blogData);
+
+                const relatedRes = await fetch(`${BASE_URL}/blogs?category=${blogData.category}`);
+                if (!relatedRes.ok) {
+                    throw new Error('Error fetching related blogs');
+                }
+
+                const relatedData = await relatedRes.json();
+                setRelatedBlogs(relatedData.filter(b => b._id !== id)); // Exclude the current blog
             } catch (error) {
-                console.log(error.message);
+                console.error(error.message);
                 setError(error.message);
+            } finally {
+                setLoading(false);
             }
         };
 
-        getBlogById();
+
+        fetchBlogAndRelated();
     }, [BASE_URL, id]);
 
     const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl?.replace('\\', '/')}`;
