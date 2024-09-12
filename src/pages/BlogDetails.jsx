@@ -22,6 +22,7 @@ const BlogDetails = () => {
                     throw new Error('Blog not found');
                 }
                 const blogData = await blogRes.json();
+                console.log(blogData);
                 setBlog(blogData);
 
                 // Fetch related blogs based on category, excluding the current blog
@@ -30,6 +31,8 @@ const BlogDetails = () => {
                     throw new Error('Error fetching related blogs');
                 }
                 const relatedData = await relatedRes.json();
+
+                console.log(relatedData);
 
                 // Filter out the current blog from the related blogs
                 const filteredRelatedBlogs = relatedData.blogs.filter(b => b._id !== id);
