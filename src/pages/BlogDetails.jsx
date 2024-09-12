@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaUser, FaCalendar, FaTags } from "react-icons/fa";
 import Loader from "../components/Loader";
 import BlogCard from "../components/BlogCard";
+import DOMPurify from "dompurify";
 
 const BlogDetails = () => {
     const { id } = useParams();
@@ -50,6 +51,8 @@ const BlogDetails = () => {
 
     const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl?.replace('\\', '/')}`;
 
+    const sanitizedContent = DOMPurify.sanitize(blog.content);
+
     return (
         <>
             <section className="px-6 xl:px-12 py-8 max-w-4xl mx-auto">
@@ -71,11 +74,17 @@ const BlogDetails = () => {
                                 <span className="mx-2">|</span>
                                 <FaTags className="mr-2" /> <span>{blog.category}</span>
                             </div>
-                            <p className="text-gray-600 text-base leading-7 tracking-wider">{blog.content}</p>
+
+                            {/* Render sanitized HTML content */}
+                            <div
+                                className="text-gray-600 text-base leading-7 tracking-wider"
+                                dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+                            />
                         </div>
                     </div>
                 )}
             </section>
+
             {/* Related Blogs section */}
             <section className="mt-8 px-[5%] xl:px-12 py-4 bg-red-100">
                 <h2 className="text-2xl font-semibold mb-4">Related Blogs</h2>

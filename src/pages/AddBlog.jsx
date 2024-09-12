@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDropzone } from 'react-dropzone';
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const AddBlog = () => {
 
@@ -54,6 +56,8 @@ const AddBlog = () => {
                 method: 'POST',
                 body: formData,
             });
+
+            console.log(content);
 
             if (response.ok) {
                 const data = await response.json();
@@ -121,11 +125,19 @@ const AddBlog = () => {
 
                     {/* Blog Content */}
                     <div>
-                        <textarea
+                        {/* <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                             placeholder="Content"
                             rows="6"
+                            className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                        /> */}
+
+                        <ReactQuill
+                            value={content}
+                            onChange={setContent}
+                            theme="snow"
+                            placeholder="Write your blog content here..."
                             className="w-full p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
                         />
                     </div>
