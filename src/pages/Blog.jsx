@@ -4,8 +4,8 @@ import BlogCard from '../components/BlogCard';
 import Loader from '../components/Loader';
 
 const Blog = () => {
-  /* const BASE_URL = 'https://myhub-server.onrender.com/api'; */
-  const BASE_URL = 'http://localhost:5555/api';
+  const BASE_URL = 'https://myhub-server.onrender.com/api';
+  /* const BASE_URL = 'http://localhost:5555/api'; */
 
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -71,7 +71,7 @@ const Blog = () => {
 
         <section className='px-4 py-8 bg-gray-100'>
           <h2 className="text-3xl sm:text-4xl font-light text-center mb-8">Latest Blogs</h2>
-          <div className='flex flex-col gap-6 sm:gap-8 md:flex-row md:justify-center'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
             {blogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} />
             ))}
