@@ -35,7 +35,7 @@ const BlogDetails = () => {
                 console.log(relatedData);
 
                 // Filter out the current blog from the related blogs
-                const filteredRelatedBlogs = relatedData.blogs.filter(b => b._id !== id);
+                const filteredRelatedBlogs = relatedData.filter(b => b._id !== id);
                 setRelatedBlogs(filteredRelatedBlogs);
             } catch (error) {
                 console.error(error.message);
