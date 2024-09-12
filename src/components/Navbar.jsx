@@ -80,9 +80,28 @@ const Navbar = () => {
                 {/* Mobile Menu Toggle */}
                 <div className="sm:hidden relative">
                     <button onClick={toggleMobileMenu} className="text-gray-700">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
+                        {isMobileMenuOpen ? (
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="w-6 h-6"
+                            >
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+
+
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        )}
                     </button>
 
                     {/* Mobile Menu */}
@@ -93,6 +112,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/"
                                         className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
                                     >
                                         Home
                                     </NavLink>
@@ -101,6 +121,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/projects"
                                         className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
                                     >
                                         Projects
                                     </NavLink>
@@ -109,6 +130,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/blog"
                                         className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
                                     >
                                         Blogs
                                     </NavLink>
@@ -117,6 +139,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/contact"
                                         className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
                                     >
                                         Contact
                                     </NavLink>
@@ -125,6 +148,7 @@ const Navbar = () => {
                                     <NavLink
                                         to="/about"
                                         className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
+                                        onClick={toggleMobileMenu}
                                     >
                                         About
                                     </NavLink>
