@@ -21,7 +21,7 @@ const BlogDetails = () => {
                     setBlog(data);
                     setLoading(false);
                 } else {
-                    setError("Something went wrong");
+                    setError("Something went wrong! Please try again later");
                     setLoading(false);
                 }
             } catch (error) {
@@ -33,7 +33,7 @@ const BlogDetails = () => {
         getBlogById();
     }, [BASE_URL]);
 
-    const imageUrl = `http://localhost:5555/${blog.imgUrl?.replace('\\', '/')}`;
+    const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl?.replace('\\', '/')}`;
 
     return (
         <section className="px-6 xl:px-12 py-8 max-w-4xl mx-auto">

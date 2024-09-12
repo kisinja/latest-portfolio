@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BlogCard = ({ blog }) => {
     // Construct the image URL
-    const imageUrl = `http://localhost:5555/${blog.imgUrl.replace('\\', '/')}`;
+    const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl.replace('\\', '/')}`;
 
     const formatTime = time => {
         const date = new Date(time);
