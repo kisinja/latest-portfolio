@@ -1,9 +1,12 @@
 import { FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import DOMPurify from "dompurify";
 
 const BlogCard = ({ blog }) => {
     // Construct the image URL
     const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl.replace('\\', '/')}`;
+
+    const sanitizedContent = DOMPurify.sanitize(blog.content);
 
     const formatTime = time => {
         const date = new Date(time);
@@ -39,11 +42,13 @@ const BlogCard = ({ blog }) => {
                 </div>
 
                 {/* Blog Content */}
-                <div className=''>
+                {/* <div className=''>
                     <p className="text-gray-600 text-base leading-6 tracking-wider">
                         {blog.content.length > 100 ? `${blog.content.slice(0, 100)}...` : blog.content}
                     </p>
-                </div>
+                </div> */}
+
+                <div className="text-gray-600 text-base leading-6 tracking-wider" dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
 
                 {/* Blog Metadata */}
                 {/* <div className='flex justify-between items-center'>
