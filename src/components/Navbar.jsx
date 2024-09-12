@@ -92,41 +92,41 @@ const Navbar = () => {
                                 <li>
                                     <NavLink
                                         to="/"
-                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'text-red-600' : ''}`}
+                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
                                     >
-                                        HOME
+                                        Home
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         to="/projects"
-                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'text-red-600' : ''}`}
+                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
                                     >
-                                        PROJECTS
+                                        Projects
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         to="/blog"
-                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'text-red-600' : ''}`}
+                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
                                     >
-                                        BLOG
+                                        Blogs
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         to="/contact"
-                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'text-red-600' : ''}`}
+                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
                                     >
-                                        CONTACT
+                                        Contact
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
                                         to="/about"
-                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'text-red-600' : ''}`}
+                                        className={({ isActive }) => `block font-bold hover:text-red-600 transition-all ${isActive ? 'active' : ''}`}
                                     >
-                                        ABOUT
+                                        About
                                     </NavLink>
                                 </li>
                             </ul>
