@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FaUser, FaCalendar, FaTags } from "react-icons/fa";
 import Loader from "../components/Loader";
+import BlogCard from "../components/BlogCard";
 
 const BlogDetails = () => {
     const { id } = useParams();
     const [blog, setBlog] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [relatedBlogs, setRelatedBlogs] = useState([]);
 
     const BASE_URL = `https://myhub-server.onrender.com/api/blogs/${id}`;
 
@@ -20,6 +22,17 @@ const BlogDetails = () => {
                     const data = await res.json();
                     setBlog(data);
                     setLoading(false);
+
+                    // fetching related blogs
+                    const relatedRes = await fetch(`BASE_URL/related?category=${data.category}`);
+                    if (relatedRes.ok) {
+                        const relatedData = await relatedRes.json();
+                        console.log(relatedData);
+                        setRelatedBlogs(relatedData.filter(b => b._id !== id)); // filtering out the current blog
+                    } else {
+                        setError("Blog not found");
+                        setLoading(false);
+                    }
                 } else {
                     setError("Something went wrong! Please try again later");
                     setLoading(false);
@@ -31,7 +44,7 @@ const BlogDetails = () => {
         };
 
         getBlogById();
-    }, [BASE_URL]);
+    }, [BASE_URL, id]);
 
     const imageUrl = `https://myhub-server.onrender.com/${blog.imgUrl?.replace('\\', '/')}`;
 
@@ -61,6 +74,20 @@ const BlogDetails = () => {
                     </div>
                 </div>
             )}
+
+            {/* Related Blogs section */}
+            <section className="mt-8">
+                <h2 className="text-2xl font-semibold mb-4">Related Blogs</h2>
+                {relatedBlogs.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {relatedBlogs.map(relatedBlog => (
+                            <BlogCard key={relatedBlog._id} blog={relatedBlog} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-xl text-gray-800 text-center">No related blogs found.</div>
+                )}
+            </section>
         </section>
     );
 };
