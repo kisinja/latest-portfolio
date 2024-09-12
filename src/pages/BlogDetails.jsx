@@ -35,7 +35,7 @@ const BlogDetails = () => {
                 console.log(relatedData);
 
                 // Filter out the current blog from the related blogs
-                const filteredRelatedBlogs = relatedData.filter(b => b._id !== id);
+                const filteredRelatedBlogs = relatedData.blogs.filter(b => b._id !== id);
                 setRelatedBlogs(filteredRelatedBlogs);
             } catch (error) {
                 console.error(error.message);
@@ -77,7 +77,7 @@ const BlogDetails = () => {
                 )}
             </section>
             {/* Related Blogs section */}
-            <section className="mt-8 px-[5%] xl:px-12 py-4">
+            <section className="mt-8 px-[5%] xl:px-12 py-4 bg-red-100">
                 <h2 className="text-2xl font-semibold mb-4">Related Blogs</h2>
                 {relatedBlogs.length > 0 ? (
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
