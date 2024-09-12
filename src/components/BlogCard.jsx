@@ -8,6 +8,18 @@ const BlogCard = ({ blog }) => {
 
     const sanitizedContent = DOMPurify.sanitize(blog.content);
 
+    // Slice the sanitized content to 100 characters (without breaking HTML)
+    const sliceContent = (htmlContent, maxLength) => {
+        const div = document.createElement("div");
+        div.innerHTML = htmlContent;
+        const textContent = div.textContent || div.innerText || "";
+        return textContent.length > maxLength
+            ? textContent.slice(0, maxLength) + "..."
+            : textContent;
+    };
+
+    const slicedContent = sliceContent(sanitizedContent, 100);
+
     const formatTime = time => {
         const date = new Date(time);
         const options = { month: "short", day: "numeric" }
@@ -48,7 +60,7 @@ const BlogCard = ({ blog }) => {
                     </p>
                 </div> */}
 
-                <div className="text-gray-600 text-base leading-6 tracking-wider" dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
+                <div className="text-gray-600 text-base leading-6 tracking-wider" dangerouslySetInnerHTML={{ __html: slicedContent }} />
 
                 {/* Blog Metadata */}
                 {/* <div className='flex justify-between items-center'>
