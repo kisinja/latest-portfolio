@@ -11,12 +11,12 @@ const BlogDetails = () => {
     const [error, setError] = useState('');
     const [relatedBlogs, setRelatedBlogs] = useState([]);
 
-    const BASE_URL = `https://myhub-server.onrender.com/api/blogs/${id}`;
+    const BASE_URL = `https://myhub-server.onrender.com/api`;
 
     useEffect(() => {
         const getBlogById = async () => {
             try {
-                const res = await fetch(BASE_URL);
+                const res = await fetch(`BASE_URL/blogs/${id}`);
 
                 if (res.ok) {
                     const data = await res.json();
@@ -24,7 +24,7 @@ const BlogDetails = () => {
                     setLoading(false);
 
                     // fetching related blogs
-                    const relatedRes = await fetch(`BASE_URL/related?category=${data.category}`);
+                    const relatedRes = await fetch(`BASE_URL/blogs/related?category=${data.category}`);
                     if (relatedRes.ok) {
                         const relatedData = await relatedRes.json();
                         console.log(relatedData);
