@@ -3,6 +3,7 @@ import Skills from "../components/Skills";
 import RightArrow from "../components/RightArrow";
 import Projects from "../components/Projects";
 import myImage from '../assets/edited-1.png';
+import BlogFeature from "../components/BlogFeature";
 
 const Home = () => {
   return (
@@ -48,6 +49,10 @@ const Home = () => {
               </button>
             </Link>
           </div>
+        </section>
+
+        <section className="px-[5%] py-[60px]">
+          <BlogFeature/>
         </section>
       </main>
     </main>
